@@ -1,0 +1,30 @@
+<h1>Leave a Review for <%= @restaurant.name %></h1>
+
+<%= form_with model: [@restaurant, @review], local: true do |form| %>
+  <% if @review.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(@review.errors.count, "error") %> prevented this review from being saved:</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :rating %><br>
+    <%= form.number_field :rating, in: 0..5 %>
+  </div>
+
+  <div>
+    <%= form.submit "Submit Review" %>
+  </div>
+<% end %>
+
+<p><%= link_to 'Back to restaurant', restaurant_path(@restaurant) %></p>

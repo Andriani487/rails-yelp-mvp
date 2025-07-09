@@ -1,0 +1,13 @@
+<h1>All Restaurants</h1>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <% next unless restaurant.persisted? && restaurant.name.present? %>
+    <li>
+      <strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong><br>
+      <%= restaurant.address %><br>
+      <%= restaurant.phone_number %><br>
+      <em><%= restaurant.category.capitalize %></em>
+    </li>
+  <% end %>
+</ul>

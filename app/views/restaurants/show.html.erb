@@ -1,0 +1,16 @@
+<h2>Reviews</h2>
+
+<% if @restaurant.revies.any? %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+    <li>
+      <strong>Rating:</strong><%= review.rating %>/5<br>
+      <%= review.content %>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
+
+<p><%= link_to "All Reviews", restaurants_review_path(@restaurant) %></p>
