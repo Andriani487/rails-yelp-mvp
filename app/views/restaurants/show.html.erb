@@ -25,8 +25,8 @@
 <h2>Add a Review</h2>
 <%= simple_form_for [@restaurant, @review] do |f| %>
   <%= f.input :content %>
-  <%= f.input :rating, in: 0..5, as: :number %>
-  <%= f.button :submit, "Submit Review", class= "btn btn-primary" %>
+  <%= f.input :rating, in: 0..5, as: :integer %>
+  <%= f.button :submit, "Submit Review", class: "btn btn-primary" %>
 <% end %>
 
 <%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-secondary mt-3" %>
